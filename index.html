@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spendenfortschritt</title>
+<style>
+body{
+font-family: Arial, sans-serif;
+background:#f5f5f5;
+padding:40px;
+text-align:center;
+}
+.container{
+background:white;
+padding:30px;
+border-radius:12px;
+max-width:500px;
+margin:auto;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+.progress-bar{
+width:100%;
+background:#e0e0e0;
+border-radius:20px;
+overflow:hidden;
+height:25px;
+margin-top:20px;
+}
+.progress{
+height:100%;
+background:#2ecc71;
+width:0%;
+transition:width 0.5s;
+}
+.amount{
+font-size:28px;
+margin-top:15px;
+}
+.goal{
+color:#666;
+}
+.update{
+margin-top:20px;
+font-size:14px;
+color:#888;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<h2>نسبة تبرعات جمعية الزواج والدعم الاسري</h2>
+
+<div class="amount" id="currentAmount">$0</div>
+<div class="goal">من أصل الهدف من الحملة رقم 1 $12,000 </div>
+
+<div class="progress-bar">
+<div class="progress" id="progressBar"></div>
+</div>
+
+<p id="percentage">0%</p>
+
+<div class="update">Letzte Aktualisierung: <span id="date"></span></div>
+</div>
+
+<script>
+
+// ======== HIER NUR DIESE ZAHLEN ÄNDERN ========
+let goal = 12000;       // Zielbetrag
+let collected = 5670;   // Aktueller Spendenbetrag
+// =============================================
+
+let percent = (collected / goal) * 100;
+
+// Anzeige aktualisieren
+
+document.getElementById("currentAmount").innerText = "$" + collected.toLocaleString();
+
+document.getElementById("percentage").innerText = percent.toFixed(1) + "%";
+
+document.getElementById("progressBar").style.width = percent + "%";
+
+document.getElementById("date").innerText = new Date().toLocaleDateString();
+
+</script>
+
+</body>
+</html>
